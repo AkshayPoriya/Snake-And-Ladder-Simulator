@@ -15,7 +15,7 @@ namespace SnakeAndLadderProblem
             Random randObj = new Random();
             int noOfMoves = 0;
 
-            while(currentPosition < winningPosition)
+            while (currentPosition < winningPosition)
             {
                 int dieNumber = randObj.Next(1, 7);
                 Console.WriteLine("Die Number is {0}", dieNumber);
@@ -26,7 +26,8 @@ namespace SnakeAndLadderProblem
                     case No_Play:
                         break;
                     case Ladder:
-                        currentPosition += dieNumber;
+                        if(currentPosition+dieNumber<=winningPosition)
+                            currentPosition += dieNumber;
                         break;
                     case Snake:
                         currentPosition -= dieNumber;
@@ -38,7 +39,7 @@ namespace SnakeAndLadderProblem
                 }
                 noOfMoves++;
             }
-            Console.WriteLine("Current Position is {0}",currentPosition);
+            Console.WriteLine("Current Position is {0}", currentPosition);
             Console.WriteLine("Total moves used {0}", noOfMoves);
         }
     }
